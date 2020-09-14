@@ -10,6 +10,5 @@
                 <button type="submit" class="button button--inverse">新規登録</button></form>
                 <button type="submit" class="button button--inverse">ログイン</button></form>
             </div>
-        </div>
     </div>
 @endsection

@@ -21,8 +21,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::post('post/register', 'Admin\PostController@register');
     Route::get('post/login', 'Admin\PostController@login');
     Route::get('post/enter', 'Admin\PostController@enter');
-    Route::post('post/enter', 'Admin\Postcontroller@enter');
-    Route::get('post/profile', 'Admin\Postcontroller@profile');
+    Route::post('post/enter', 'Admin\PostController@enter');
+    Route::get('post/profile', 'Admin\PostController@profile');
 });
 
 Auth::routes();
