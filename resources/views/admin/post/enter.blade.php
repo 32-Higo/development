@@ -7,8 +7,17 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>投稿入力</h2>
-            <div class="form-group row">
-                <label class="col-md-8">メールアドレス</label>
+            <form action="{{ action('Admin\PostController@enter') }}" method="post" enctype="multipart/form-data">
+                
+                @if (count($errors) > 0)
+                        <ul>
+                            @foreach($errors->all() as $e)
+                                <li>{{ $e }}</li>
+                            @endforeach
+                        </ul>
+                    @endif
+                <div class="form-group row">
+                    <label class="col-md-8">タイトル</label>
                 <div class="col-md-10">
                     <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                 </div>

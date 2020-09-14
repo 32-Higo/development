@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -16,12 +17,21 @@ class PostController extends Controller
   {
       return view('admin.post.register');
   }
+  
   public function login(Request $request)
   {
       return view('admin.post.login');
   }
+  
   public function enter(Request $request)
   {
+      
       return view('admin.post.enter');
+
+  }
+  public function profile(Request $request)
+  {
+      return view('admin.post.profile');
+
   }
 }
