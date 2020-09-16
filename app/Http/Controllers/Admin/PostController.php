@@ -11,6 +11,7 @@ class PostController extends Controller
     public function add()
   {
       return view('admin.post.top');
+     
   }
   
   public function register(Request $request)
@@ -25,8 +26,15 @@ class PostController extends Controller
   
   public function enter(Request $request)
   {
+      $this->validate($request, Post::$rules);
+      $post = new Post;
+      $form =$request->all();
+      unset($form['_token']);
+      $post->fill($form);
+      $post->save();
       
       return view('admin.post.enter');
+      return redirect('admin/post/enter');
 
   }
   public function profile(Request $request)
@@ -34,4 +42,15 @@ class PostController extends Controller
       return view('admin.post.profile');
 
   }
+  public function search(Request $request)
+  {
+      return view('admin.post.search');
+
+  }
+  public function detail(Request $request)
+  {
+      return view('admin.post.detail7');
+
+  }
+
 }

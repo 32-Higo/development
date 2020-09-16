@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'テックペディアプロフィール')
+@section('title', 'テックペディア検索')
 
 @section('content')
     <div class="container">
@@ -10,6 +10,5 @@
                 <button type="submit" class="button button--inverse">新規登録</button></form>
                 <button type="submit" class="button button--inverse">ログイン</button></form>
             </div>
-            <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo">
     </div>
 @endsection

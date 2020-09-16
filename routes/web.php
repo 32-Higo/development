@@ -23,6 +23,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('post/enter', 'Admin\PostController@enter');
     Route::post('post/enter', 'Admin\PostController@enter');
     Route::get('post/profile', 'Admin\PostController@profile');
+    Route::get('post/search', 'Admin\PostController@search');
+    Route::get('post/detail', 'Admin\PostController@detail');
 });
 
 Auth::routes();
