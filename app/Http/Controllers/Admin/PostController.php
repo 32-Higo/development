@@ -14,6 +14,11 @@ class PostController extends Controller
      
   }
   
+  public function top()
+  {
+     
+  }
+  
   public function register(Request $request)
   {
       return view('admin.post.register');
@@ -49,7 +54,7 @@ class PostController extends Controller
   }
   public function detail(Request $request)
   {
-      return view('admin.post.detail7');
+      return view('admin.post.detail');
 
   }
 
