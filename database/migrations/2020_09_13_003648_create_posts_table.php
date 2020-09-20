@@ -10,7 +10,9 @@ class CreatePostsTable extends Migration
      * Run the migrations.
      *
      * @return void
+     * 
      */
+    
     public function up()
     {
         Schema::create('post', function (Blueprint $table)

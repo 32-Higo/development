@@ -10,15 +10,15 @@ class PostController extends Controller
 {
     public function add()
   {
-      return view('admin.post.top');
-     
-  }
+      return view('admin.post.enter');
+      
   
+  }
+
   public function top()
   {
-     
+     return view('admin.post.top');
   }
-  
   public function register(Request $request)
   {
       return view('admin.post.register');
@@ -29,7 +29,7 @@ class PostController extends Controller
       return view('admin.post.login');
   }
   
-  public function enter(Request $request)
+  public function create(Request $request)
   {
       $this->validate($request, Post::$rules);
       $post = new Post;
@@ -38,10 +38,21 @@ class PostController extends Controller
       $post->fill($form);
       $post->save();
       
-      return view('admin.post.enter');
       return redirect('admin/post/enter');
 
   }
+  
+  public function index(Request $request)
+  {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          $posts = Post::where('title', $cond_title)->get();
+      } else {
+          $posts = Post::all();
+      }
+      return view('admin.post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+      }
+  
   public function profile(Request $request)
   {
       return view('admin.post.profile');

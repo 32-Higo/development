@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>投稿入力</h2>
-            <form action="{{ action('Admin\PostController@enter') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ action('Admin\PostController@create') }}" method="post" enctype="multipart/form-data">
                 
                 @if (count($errors) > 0)
                         <ul>
