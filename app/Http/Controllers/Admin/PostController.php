@@ -15,8 +15,15 @@ class PostController extends Controller
   
   }
 
-  public function top()
+  public function top(Request $request)
   {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          $posts = Post::where('title', $cond_title)->get();
+      } else {
+          $posts = Post::all();
+      }
+      return view('admin.post.top', ['posts' => $posts, 'cond_title' => $cond_title]);
      return view('admin.post.top');
   }
   public function register(Request $request)
@@ -55,6 +62,13 @@ class PostController extends Controller
   
   public function profile(Request $request)
   {
+      $cond_title = $request->cond_title;
+      if ($cond_title != '') {
+          $posts = Post::where('title', $cond_title)->get();
+      } else {
+          $posts = Post::all();
+      }
+      return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
       return view('admin.post.profile');
 
   }
