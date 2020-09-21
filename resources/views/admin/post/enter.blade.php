@@ -1,4 +1,4 @@
-@extends('layouts.enter')
+@extends('layouts.admin')
 
 @section('title', 'テックペディア投稿入力')
 
