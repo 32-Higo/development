@@ -23,7 +23,7 @@
                 </div>
                     <label class="col-md-8">投稿内容</label>
                 <div class="col-md-10">
-                    <textarea class="form-control" name="introduction" rows="10">{{ old('introduction') }}</textarea>
+                    <textarea class="form-control" name="body" rows="10">{{ old('introduction') }}</textarea>
                 </div>
                 <div class="col-md-10">
                 {{ csrf_field() }}

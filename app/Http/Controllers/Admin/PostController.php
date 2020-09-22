@@ -43,6 +43,7 @@ class PostController extends Controller
       $form =$request->all();
       unset($form['_token']);
       $post->fill($form);
+      $post->user_id();
       $post->save();
       
       return redirect('admin/post/enter');
