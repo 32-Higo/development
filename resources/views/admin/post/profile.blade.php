@@ -10,6 +10,6 @@
                 <button type="submit" class="button button--inverse">新規登録</button></form>
                 <button type="submit" class="button button--inverse">ログイン</button></form>
             </div>
-            <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo">
+            <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; $height = 100;>
     </div>
 @endsection

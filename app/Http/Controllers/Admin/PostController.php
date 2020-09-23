@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
+use Illuminate\Support\Facades\Auth;
 
 class PostController extends Controller
 {
@@ -43,7 +44,7 @@ class PostController extends Controller
       $form =$request->all();
       unset($form['_token']);
       $post->fill($form);
-      $post->user_id();
+      $post->user_id = Auth::id();
       $post->save();
       
       return redirect('admin/post/enter');
