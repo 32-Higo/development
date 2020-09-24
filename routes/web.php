@@ -27,6 +27,9 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('post/search', 'Admin\PostController@search');
     Route::get('post/detail', 'Admin\PostController@detail');
     Route::get('post', 'Admin\PostController@index');
+    Route::get('post/edit', 'Admin\PostController@edit'); // 追記
+    Route::post('post/edit', 'Admin\PostController@update'); // 追記
+    Route::get('post/delete', 'Admin\PostController@delete');
 });
 
 Auth::routes();

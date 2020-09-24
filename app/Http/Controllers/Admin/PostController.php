@@ -70,6 +70,14 @@ class PostController extends Controller
       } else {
           $posts = Post::all();
       }
+      $post = new Post;
+      $form =$request->all();
+      unset($form['_token']);
+       $post->fill($form);
+      $post->user_id = Auth::id();
+      $post->save();
+      
+
       return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
       return view('admin.post.profile');
 
@@ -84,5 +92,33 @@ class PostController extends Controller
       return view('admin.post.detail');
 
   }
+
+public function edit(Request $request)
+{
+    $post = Post::find($request->id);
+    if (empty($post)) {
+        abort(404);
+    }
+    return view('admin.post.edit', ['post_form' => $post]);
+}
+
+public function update(Request $request)
+{
+    $this->validate($request, Post::$rules);
+    $post = Post::find($request->id);
+      $post_form = $request->all();
+      unset($post_form['_token']);
+
+      $post->fill($post_form)->save();
+
+      return redirect('admin/post');
+}
+
+public function delete(Request $request)
+  {
+      $post = Post::find($request->id);
+      $post->delete();
+      return redirect('admin/post');
+  }  
 
 }
