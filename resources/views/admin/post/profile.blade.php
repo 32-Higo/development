@@ -12,4 +12,15 @@
             </div>
             <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; $height = 100;>
     </div>
+            <table class="table table-dark">
+                
+            @foreach($posts as $post)
+                                <tr>
+                                    <th>{{ $post->id }}</th>
+                                    <td>{{ \Str::limit($post->title, 100) }}</td>
+                                    <td>{{ \Str::limit($post->body, 250) }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+            </table>
 @endsection
