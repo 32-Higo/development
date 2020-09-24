@@ -11,7 +11,6 @@
                 <button type="submit" class="button button--inverse">ログイン</button></form>
             </div>
             <div class="search">
-                <input type="text" name="cond_title" >
             </div>
         </div>
     </div>

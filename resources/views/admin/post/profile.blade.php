@@ -21,10 +21,10 @@
                                     <td>{{ \Str::limit($post->body, 250) }}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ action('Admin\PostController@profile', ['id' => $post->id]) }}">編集</a>
+                                            <a href="{{ action('Admin\PostController@edit', ['id' => $post->id]) }}">編集</a>
                                         </div>
                                         <div>
-                                            <a href="{{ action('Admin\PostController@profile', ['id' => $post->id]) }}">削除</a>
+                                            <a href="{{ action('Admin\PostController@delete', ['id' => $post->id]) }}">削除</a>
                                         </div>
                                     </td>
                                 </tr>
