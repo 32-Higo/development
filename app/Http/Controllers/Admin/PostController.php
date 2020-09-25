@@ -15,7 +15,11 @@ class PostController extends Controller
       
   
   }
-
+  public function mypage()
+{
+      return view('admin.post.profile');
+    
+}
   public function top(Request $request)
   {
       $cond_title = $request->cond_title;
@@ -82,7 +86,6 @@ class PostController extends Controller
       
 
       return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
-      return view('admin.post.profile');
 
   }
   public function search(Request $request)

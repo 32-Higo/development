@@ -22,7 +22,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('post/login', 'Admin\PostController@login');
     Route::get('post/enter', 'Admin\PostController@add');
     Route::post('post/enter', 'Admin\PostController@create');
-    Route::get('post/profile', 'Admin\PostController@profile');
+    Route::get('post/profile', 'Admin\PostController@mypage');
     Route::post('post/profile', 'Admin\PostController@profile');
     Route::get('post/search', 'Admin\PostController@search');
     Route::get('post/detail', 'Admin\PostController@detail');
