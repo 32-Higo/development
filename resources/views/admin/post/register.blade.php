@@ -17,7 +17,7 @@
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                     </div>
-                    <label class="col-md-8">パスワード(任意)</label>
+                    <label class="col-md-8">パスワード(確認)</label>
                     <div class="col-md-10">
                         <input type="text" class="form-control" name="title" value="{{ old('title') }}">
                     </div>

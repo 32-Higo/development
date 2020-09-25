@@ -17,9 +17,9 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('post/top', 'Admin\PostController@top');
-    Route::get('post/register', 'Admin\PostController@register');
     Route::post('post/register', 'Admin\PostController@register');
-    Route::get('post/login', 'Admin\PostController@login');
+    Route::get('post/register', 'Admin\PostController@register');
+    Route::post('post/login', 'Admin\PostController@login');
     Route::get('post/enter', 'Admin\PostController@add');
     Route::post('post/enter', 'Admin\PostController@create');
     Route::get('post/profile', 'Admin\PostController@mypage');
@@ -27,8 +27,8 @@ Route::group(['prefix' => 'admin', 'middleware' => 'auth'], function() {
     Route::get('post/search', 'Admin\PostController@search');
     Route::get('post/detail', 'Admin\PostController@detail');
     Route::get('post', 'Admin\PostController@index');
-    Route::get('post/edit', 'Admin\PostController@edit'); // 追記
-    Route::post('post/edit', 'Admin\PostController@update'); // 追記
+    Route::get('post/edit', 'Admin\PostController@edit'); 
+    Route::post('post/edit', 'Admin\PostController@update'); 
     Route::get('post/delete', 'Admin\PostController@delete');
 });
 

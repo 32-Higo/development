@@ -10,121 +10,132 @@ use Illuminate\Support\Facades\Auth;
 class PostController extends Controller
 {
     public function add()
-  {
-      return view('admin.post.enter');
-      
-  
-  }
-  public function mypage()
-{
-      return view('admin.post.profile');
+    {
+        
+        return view('admin.post.enter');
+    }
     
-}
-  public function top(Request $request)
-  {
-      $cond_title = $request->cond_title;
-      if ($cond_title != '') {
+    public function mypage(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
           $posts = Post::where('title', $cond_title)->get();
-      } else {
+        } else {
           $posts = Post::all();
-      }
-      return view('admin.post.top', ['posts' => $posts, 'cond_title' => $cond_title]);
-     return view('admin.post.top');
-  }
-  public function register(Request $request)
-  {
-      return view('admin.post.register');
-  }
-  
-  public function login(Request $request)
-  {
-      return view('admin.post.login');
-  }
-  
-  public function create(Request $request)
-  {
-      $this->validate($request, Post::$rules);
-      $post = new Post;
-      $form =$request->all();
-      unset($form['_token']);
-      $post->fill($form);
-      $post->user_id = Auth::id();
-      $post->save();
+        }
       
-      return redirect('admin/post/enter');
-
-  }
+        return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+    
+    }
+    
+    public function top(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            $posts = Post::where('title', $cond_title)->get();
+        } else {
+            $posts = Post::all();
+        }
+        
+        return view('admin.post.top', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('admin.post.top');
+    }
+    
+    public function register(Request $request)
+    {
+      
+        return view('admin.post.register');
+    }
   
-  public function index(Request $request)
-  {
-      $cond_title = $request->cond_title;
-      if ($cond_title != '') {
-          $posts = Post::where('title', $cond_title)->get();
-      } else {
+    public function login(Request $request)
+    {
+        
+        return view('admin.post.login');
+    }
+  
+    public function create(Request $request)
+    {
+        $this->validate($request, Post::$rules);
+        $post = new Post;
+        $form =$request->all();
+        unset($form['_token']);
+        $post->fill($form);
+        $post->user_id = Auth::id();
+        $post->save();
+      
+        return redirect('admin/post/enter');
+    }
+  
+    public function index(Request $request)
+    {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            $posts = Post::where('title', $cond_title)->get();
+        } else {
           $posts = Post::all();
-      }
-      return view('admin.post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
-      }
+        }
+        return view('admin.post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
   
   public function profile(Request $request)
-  {
-    $this->validate($request, Post::$rules);
-     $post = new Post;
-      $form =$request->all();
-      unset($form['_token']);
-       $post->fill($form);
-      $post->user_id = Auth::id();
-      $post->save();
+    {
+        $this->validate($request, Post::$rules);
+        $post = new Post;
+        $form =$request->all();
+        unset($form['_token']);
+        $post->fill($form);
+        $post->user_id = Auth::id();
+        $post->save();
      
-      $cond_title = $request->cond_title;
-      if ($cond_title != '') {
-          $posts = Post::where('title', $cond_title)->get();
-      } else {
+        $cond_title = $request->cond_title;
+        if ($cond_title != '') {
+            $posts = Post::where('title', $cond_title)->get();
+        } else {
           $posts = Post::all();
-      }
-      
-      
+        }
 
-      return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+    }
+    
+    public function search(Request $request)
+    {
+        
+        return view('admin.post.search');
 
-  }
-  public function search(Request $request)
-  {
-      return view('admin.post.search');
+    }
+    public function detail(Request $request)
+    {
+        
+        return view('admin.post.detail');
+    }
 
-  }
-  public function detail(Request $request)
-  {
-      return view('admin.post.detail');
-
-  }
-
-public function edit(Request $request)
-{
-    $post = Post::find($request->id);
-    if (empty($post)) {
+    public function edit(Request $request)
+    {
+        $post = Post::find($request->id);
+        if (empty($post)) {
         abort(404);
     }
-    return view('admin.post.edit', ['post_form' => $post]);
-}
+        
+        return view('admin.post.edit', ['post_form' => $post]);
+    }
+   
+    public function update(Request $request)
+    {
+        $this->validate($request, Post::$rules);
+        $post = Post::find($request->id);
+        $post_form = $request->all();
+        unset($post_form['_token']);
+        $post->fill($post_form)->save();
 
-public function update(Request $request)
-{
-    $this->validate($request, Post::$rules);
-    $post = Post::find($request->id);
-      $post_form = $request->all();
-      unset($post_form['_token']);
+        return redirect('admin/post');
+    }
 
-      $post->fill($post_form)->save();
+    public function delete(Request $request)
+    {
+        $post = Post::find($request->id);
+        $post->delete();
+        
+        return redirect('admin/post');
+    }  
 
-      return redirect('admin/post');
-}
-
-public function delete(Request $request)
-  {
-      $post = Post::find($request->id);
-      $post->delete();
-      return redirect('admin/post');
-  }  
-
-}
+    } 

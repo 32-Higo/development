@@ -7,14 +7,12 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>マイページ</h2>
-                <button type="submit" class="button button--inverse">新規登録</button></form>
-                <button type="submit" class="button button--inverse">ログイン</button></form>
-            </div>
-            <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; $height = 100;>
-    </div>
-            <table class="table table-dark">
-                
-            @foreach($posts as $post)
+                <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; height = 100;>
+                <form action="{{ action('Admin\PostController@add') }}" method="get" enctype="multipart/form-data">
+                    <button type="submit" class="button button--inverse">新規投稿</button>
+                        <table class="table table-dark">
+                            <tbody>
+                            @foreach($posts as $post)
                                 <tr>
                                     <th>{{ $post->id }}</th>
                                     <td>{{ \Str::limit($post->title, 100) }}</td>
@@ -30,5 +28,9 @@
                                 </tr>
                             @endforeach
                             </tbody>
-            </table>
+                       </table>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection

@@ -7,10 +7,14 @@
         <div class="row">
             <div class="col-md-8 mx-auto">
                 <h2>Techpedia</h2>
-                <button type="submit" class="button button--inverse">新規登録</button></form>
-                <button type="submit" class="button button--inverse">ログイン</button></form>
-            </div>
-            <div class="search">
+                <form action="{{ action('Admin\PostController@register') }}" method="post" enctype="multipart/form-data">
+                      @csrf 
+                    <button type="submit" class="button button--inverse">新規登録</button>
+                </form>
+                <form action="{{ action('Admin\PostController@login') }}" method="post" enctype="multipart/form-data">  
+                     @csrf 
+                    <button type="submit" class="button button--inverse">ログイン</button>
+                </form>
             </div>
         </div>
     </div>
