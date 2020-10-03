@@ -31,7 +31,7 @@
                     </div>
                     <label class="col-md-8">紹介文(任意)</label>
                     <div class="col-md-10">
-                        <textarea class="form-control" name="introduction" rows="4">{{ old('introduction') }}</textarea>
+                        <textarea class="form-control" name="introduction">{{ old('introduction')}}</textarea>
                     </div>
                     
                     <label class="col-md-6">画像</label>

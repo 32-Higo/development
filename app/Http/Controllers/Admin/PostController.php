@@ -12,7 +12,7 @@ class PostController extends Controller
     public function add()
     {
         
-        return view('admin.post.enter');
+        return view('post.enter');
     }
     
     public function mypage(Request $request)
@@ -24,7 +24,7 @@ class PostController extends Controller
           $posts = Post::all();
         }
       
-        return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
     
     }
     
@@ -37,20 +37,20 @@ class PostController extends Controller
             $posts = Post::all();
         }
         
-        return view('admin.post.top', ['posts' => $posts, 'cond_title' => $cond_title]);
-        return view('admin.post.top');
+        return view('post.top', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.top');
     }
     
     public function register(Request $request)
     {
       
-        return view('admin.post.register');
+        return view('post.register');
     }
   
     public function login(Request $request)
     {
         
-        return view('admin.post.login');
+        return view('post.login');
     }
   
     public function create(Request $request)
@@ -74,7 +74,7 @@ class PostController extends Controller
         } else {
           $posts = Post::all();
         }
-        return view('admin.post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
   
   public function profile(Request $request)
@@ -94,19 +94,19 @@ class PostController extends Controller
           $posts = Post::all();
         }
 
-        return view('admin.post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
     
     public function search(Request $request)
     {
         
-        return view('admin.post.search');
+        return view('post.search');
 
     }
     public function detail(Request $request)
     {
         
-        return view('admin.post.detail');
+        return view('post.detail');
     }
 
     public function edit(Request $request)
@@ -116,7 +116,7 @@ class PostController extends Controller
         abort(404);
     }
         
-        return view('admin.post.edit', ['post_form' => $post]);
+        return view('post.edit', ['post_form' => $post]);
     }
    
     public function update(Request $request)
@@ -127,7 +127,7 @@ class PostController extends Controller
         unset($post_form['_token']);
         $post->fill($post_form)->save();
 
-        return redirect('admin/post');
+        return redirect('post');
     }
 
     public function delete(Request $request)
@@ -135,7 +135,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->delete();
         
-        return redirect('admin/post');
+        return redirect('post');
     }  
 
     } 
