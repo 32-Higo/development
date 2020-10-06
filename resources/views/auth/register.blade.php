@@ -64,14 +64,14 @@
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">性別</label>
                             <div class="col-md-6">
-                            <input type="radio" name="性別" value="男"/> 男　<input type="radio" name="性別" value="女"/> 女
+                            <input type="radio" name="gender" value="男"/> 男　<input type="radio" name="gender" value="女"/> 女
                         </div>
                         </div>
                         
                         <div class="form-group row">
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">紹介文(任意)</label>
                         <div class="col-md-6">
-                            <textarea class="form-control" name="body" rows="4">{{ old('introduction') }}</textarea>
+                            <textarea class="form-control" name="introduction" rows="4">{{ old('introduction') }}</textarea>
 
                         </div>
                         </div>

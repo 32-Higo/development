@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Post;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -65,11 +66,19 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        
+        // if (isset($data['image'])) {
+        //     $path = $request->file('image')->store('public/image');
+        //     $news->image_path = basename($path);
+        // } else {
+        //     $news->image_path = null;
+        // }
+        
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'introduction' => $date['introduction'],
+            'introduction' => $data['introduction'],
             'gender' => $data['gender']
         ]);
     }
