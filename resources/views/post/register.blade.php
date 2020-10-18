@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>ユーザー登録</h2>
-            <form action="{{ action('Admin\PostController@register') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ action('PostController@register') }}" method="post" enctype="multipart/form-data">
                 <div class="form-group row">
                     <label class="col-md-8">メールアドレス</label>
                     <div class="col-md-10">

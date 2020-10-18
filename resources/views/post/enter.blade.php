@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-md-8 mx-auto">
             <h2>投稿入力</h2>
-            <form action="{{ action('Admin\PostController@profile') }}" method="post" enctype="multipart/form-data">
+            <form action="{{ action('PostController@profile') }}" method="post" enctype="multipart/form-data">
                 @if (count($errors) > 0)
                     <ul>
                         @foreach($errors->all() as $e)
@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-10">
                 {{ csrf_field() }}
-                    <input type="submit" class="btn btn-primary" value="戻る">
+                    <a href="{{ url('post/profile') }}"><input type="submit" class="btn btn-primary" value="戻る"></a>
                     <input type="submit" class="btn btn-primary" value="投稿">
                 </div>
             </div>

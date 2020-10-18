@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Support\Facades\Auth;
+use App\Profile;
 
 class PostController extends Controller
 {
@@ -13,19 +14,6 @@ class PostController extends Controller
     {
         
         return view('post.enter');
-    }
-    
-    public function mypage(Request $request)
-    {
-        $cond_title = $request->cond_title;
-        if ($cond_title != '') {
-          $posts = Post::where('title', $cond_title)->get();
-        } else {
-          $posts = Post::all();
-        }
-      
-        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
-    
     }
     
     public function top(Request $request)
@@ -63,14 +51,14 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->save();
       
-        return redirect('admin/post/enter');
+        return redirect('post/enter');
     }
   
     public function index(Request $request)
     {
         $cond_title = $request->cond_title;
         if ($cond_title != '') {
-            $posts = Post::where('title', $cond_title)->get();
+            $posts = Post::where('title', 'LIKE', "%{$cond_title}%")->orderBy('created_at','desc')->paginate(5);
         } else {
           $posts = Post::all();
         }
@@ -86,6 +74,8 @@ class PostController extends Controller
         $post->fill($form);
         $post->user_id = Auth::id();
         $post->save();
+        
+        
      
         $cond_title = $request->cond_title;
         if ($cond_title != '') {
@@ -93,8 +83,9 @@ class PostController extends Controller
         } else {
           $posts = Post::all();
         }
+        
 
-        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title]);
+        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title,]);
     }
     
     public function search(Request $request)
@@ -138,4 +129,10 @@ class PostController extends Controller
         return redirect('post');
     }  
 
+    public function show(Request $request)
+    {
+        $post = Post::find($request->id);
+        return view('post.show', ['post' => $post]);
+    }
+    
     } 

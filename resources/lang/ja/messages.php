@@ -8,5 +8,5 @@ return [
     'Password' => 'パスワード',
     'Confirm Password' => 'パスワード　確認',
     'Remember Me' => 'ログイン情報を記憶する',
-    
+
 ];

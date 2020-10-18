@@ -8,21 +8,30 @@
             <div class="col-md-8 mx-auto">
                 <h2>マイページ</h2>
                 <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; height = 100;>
-                <form action="{{ action('Admin\PostController@add') }}" method="get" enctype="multipart/form-data">
-                    <button type="submit" class="button button--inverse">新規投稿</button>
+                
+                <!--<p>{{ $profile->nickname }}</p>-->
+                <!--<p>{{ $profile->gender }}</p>-->
+                <!--<p>{{ $profile->introduction }}</p>-->
+
+                <div>
+                    <button type="submit" class="button button--inverse"><a href="{{ url('profile/edit') }}">プロフィール編集</button>
+                 </div>   
+                 
+                <form action= "{{ action('PostController@add') }}"method="get" enctype="multipart/form-data">
+                    <button type="submit" class="button button--inverse"><a href="{{ url('post/enter') }}">新規投稿</a></button>
                         <table class="table table-dark">
                             <tbody>
                             @foreach($posts as $post)
                                 <tr>
                                     <th>{{ $post->id }}</th>
-                                    <td>{{ \Str::limit($post->title, 100) }}</td>
-                                    <td>{{ \Str::limit($post->body, 250) }}</td>
+                                    <td>{{ \Str::limit($post->title, 20) }}</td>
+                                    <td>{{ \Str::limit($post->body, 50) }}</td>
                                     <td>
                                         <div>
-                                            <a href="{{ action('Admin\PostController@edit', ['id' => $post->id]) }}">編集</a>
+                                            <a href="{{ action('PostController@edit', ['id' => $post->id]) }}">編集</a>
                                         </div>
                                         <div>
-                                            <a href="{{ action('Admin\PostController@delete', ['id' => $post->id]) }}">削除</a>
+                                            <a href="{{ action('PostController@delete', ['id' => $post->id]) }}">削除</a>
                                         </div>
                                     </td>
                                 </tr>
