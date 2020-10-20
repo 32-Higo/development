@@ -65,7 +65,7 @@ class PostController extends Controller
         return view('post.index', ['posts' => $posts, 'cond_title' => $cond_title]);
     }
   
-  public function profile(Request $request)
+    public function profile(Request $request)
     {
         $this->validate($request, Post::$rules);
         $post = new Post;
