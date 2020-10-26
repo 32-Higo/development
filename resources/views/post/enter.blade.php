@@ -26,10 +26,11 @@
                 </div>
                 <div class="col-md-10">
                 {{ csrf_field() }}
-                    <a href="{{ url('post/profile') }}"><input type="submit" class="btn btn-primary" value="戻る"></a>
+                    <input type="submit" class="btn btn-primary" value="戻る">
                     <input type="submit" class="btn btn-primary" value="投稿">
                 </div>
             </div>
+            </form>
         </div>
     </div>
 </div>
