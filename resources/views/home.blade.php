@@ -17,6 +17,9 @@
                     You are logged in!
                 </div>
             </div>
+            <div>
+                <button type="submit" class="button button--inverse"><a href="{{ url('post/profile') }}">マイページへ</button>
+            </div>
         </div>
     </div>
 </div>

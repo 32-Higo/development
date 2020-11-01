@@ -26,13 +26,14 @@ class ProfileController extends Controller
         $form = $request->all();
       
       unset($form['_token']);
-
+      unset($form['image']);
       $profile->fill($form);
       $profile->user_id = Auth::id();
     //   $profile->gender = Auth::id();
     //   $profile->introduction = Auth::id();
       $profile->save();
       
+      return redirect('post/profile');
     }
     
      public function mypage(Request $request)

@@ -67,23 +67,17 @@ class PostController extends Controller
   
     public function profile(Request $request)
     {
-        // $this->validate($request, Post::$rules);
-        // $post = new Post;
-        // $form =$request->all();
-        // unset($form['_token']);
-        // $post->fill($form);
-        // $post->user_id = Auth::id();
-        // $post->save();
+        $this->validate($request, Post::$rules);
+        $post = new Post;
+        $form =$request->all();
+        unset($form['_token']);
+        $post->fill($form);
+        $post->user_id = Auth::id();
+        $post->save();
         
-        $cond_title = $request->cond_title;
-        if ($cond_title != '') {
-            $posts = Post::where('title', $cond_title)->get();
-        } else {
-          $posts = Post::all();
-        }
         
-
-        return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title,]);
+        
+        return redirect('post/profile');
     }
     
     public function search(Request $request)

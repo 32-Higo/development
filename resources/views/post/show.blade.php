@@ -15,10 +15,13 @@
                     <div class="form-group row">
                         <label class="col-md-2" for="body">本文</label>
                         <div class="col-md-10">
-                            <p>{{ $post->body }}</p>
+                            <table class="table table-dark">
+                                
+                                <p>{{ $post->body }}</p>
+                                <a href="{{ url('post/top') }}">戻る</a></button>
                         </div>
                     </div>
-                    
+                
             </div>
         </div>
     </div>

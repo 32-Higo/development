@@ -18,8 +18,10 @@ Route::get('/', function () {
 Route::group(['middleware' => 'auth'], function() {
     Route::get('post/enter', 'PostController@add');
     Route::post('post/enter', 'PostController@create');
+    Route::post('post/profile', 'PostController@profile');
+    Route::get('post/profile', 'ProfileController@mypage');
+    Route::post('profile/edit', 'ProfileController@update');
     Route::get('profile/edit', 'ProfileController@edit');
-    Route::get('post/profile', 'PostController@profile');
     Route::get('post/detail', 'PostController@detail');
     Route::get('post/edit', 'PostController@edit'); 
     Route::post('post/edit', 'PostController@update'); 

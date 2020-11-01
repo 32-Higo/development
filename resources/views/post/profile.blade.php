@@ -8,16 +8,13 @@
             <div class="col-md-8 mx-auto">
                 <h2>マイページ</h2>
                 <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; height = 100;>
-                
-                <!--<p>{{ $profile->nickname }}</p>-->
-                <!--<p>{{ $profile->gender }}</p>-->
-                <!--<p>{{ $profile->introduction }}</p>-->
-
                 <div>
+                     <p>{{ $profile->nickname }}</p>
+                     <p>{{ $profile->gender }}</p>
+                     <p>{{ $profile->introduction }}</p>
                     <button type="submit" class="button button--inverse"><a href="{{ url('profile/edit') }}">プロフィール編集</button>
                  </div>   
-                 
-                <form action= "{{ action('PostController@add') }}"method="get" enctype="multipart/form-data">
+                 <form action= "{{ action('PostController@add') }}"method="get" enctype="multipart/form-data">
                     <button type="submit" class="button button--inverse"><a href="{{ url('post/enter') }}">新規投稿</a></button>
                         <table class="table table-dark">
                             <tbody>
