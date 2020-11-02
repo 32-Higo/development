@@ -118,7 +118,7 @@ class PostController extends Controller
         $post = Post::find($request->id);
         $post->delete();
         
-        return redirect('post');
+        return redirect('post/profile');
     }  
 
     public function show(Request $request)
@@ -127,4 +127,4 @@ class PostController extends Controller
         return view('post.show', ['post' => $post]);
     }
     
-    } 
+}

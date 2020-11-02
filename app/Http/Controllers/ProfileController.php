@@ -15,29 +15,29 @@ class ProfileController extends Controller
     public function edit(Request $request)
     {
         $profile = Profile::find($request->id);
-        $profile = Profile::where('user_id', Auth::id())->first();
 
         return view('profile.edit', ['profile' => $profile]);
     }
+    
     public function update(Request $request)
     {
         $profile = Profile::find($request->id);
         $profile= new Profile;
         $form = $request->all();
       
-      unset($form['_token']);
-      unset($form['image_path']);
-      $profile->fill($form);
-      $profile->user_id = Auth::id();
+        unset($form['_token']);
+        unset($form['image_path']);
+        $profile->fill($form);
+        $profile->user_id = Auth::id();
     //   $profile->gender = Auth::id();
     //   $profile->introduction = Auth::id();
-      $profile_form = $request->all();
-      $profile->fill($profile_form)->save();
+        $profile_form = $request->all();
+        $profile->fill($profile_form)->save();
       
-      return redirect('post/profile');
+        return redirect('post/profile');
     }
     
-     public function mypage(Request $request)
+    public function mypage(Request $request)
     {
         $profile = Profile::where('user_id', Auth::id())->first();
         $cond_title = $request->cond_title;
@@ -50,5 +50,5 @@ class ProfileController extends Controller
         return view('post.profile', ['posts' => $posts, 'cond_title' => $cond_title, 'profile' => $profile]);
     
     }
-
+    
 } 
