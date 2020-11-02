@@ -10,7 +10,7 @@
             <form action= "{{ action('ProfileController@update') }}" method="post" enctype="multipart/form-data">
                 <label class="col-md-6">画像</label>
                 <div class="col-md-8">
-                    <input type="file" class="form-control-file" name="image">
+                    <input type="file" class="form-control-file" name="image_path">
                 </div>
                 <label class="col-md-8">ニックネーム</label>
                 <div class="col-md-10">

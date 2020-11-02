@@ -110,7 +110,7 @@ class PostController extends Controller
         unset($post_form['_token']);
         $post->fill($post_form)->save();
 
-        return redirect('post');
+        return redirect('post/profile');
     }
 
     public function delete(Request $request)

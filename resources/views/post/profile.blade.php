@@ -9,6 +9,7 @@
                 <h2>マイページ</h2>
                 <img class="logo" src="{{ asset('image/milk.png') }}" alt="logo" width = 100; height = 100;>
                 <div>
+                     <p>{{ $profile->image_path }}</p>
                      <p>{{ $profile->nickname }}</p>
                      <p>{{ $profile->gender }}</p>
                      <p>{{ $profile->introduction }}</p>
