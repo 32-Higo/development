@@ -51,7 +51,7 @@ class PostController extends Controller
         $post->user_id = Auth::id();
         $post->save();
       
-        return redirect('post/enter');
+        return redirect('post/profile');
     }
   
     public function index(Request $request)
@@ -77,7 +77,7 @@ class PostController extends Controller
         
         
         
-        return redirect('post/profile');
+        return view('post.profile');
     }
     
     public function search(Request $request)
